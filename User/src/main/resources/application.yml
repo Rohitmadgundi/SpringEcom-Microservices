@@ -1,0 +1,9 @@
+#spring.application.name=User
+spring:
+  application:
+    name: user-service
+  mongodb:
+    uri: mongodb+srv://rohitmadgundi_db_user:xZn2l2M9253KCW5W@ecommerce.cg8brqd.mongodb.net/?appName=Ecommerce
+    database: userdb
+server:
+  port: 8081
