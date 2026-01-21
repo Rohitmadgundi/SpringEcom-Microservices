@@ -2,8 +2,10 @@
 spring:
   application:
     name: user-service
-  mongodb:
-    uri: mongodb+srv://rohitmadgundi_db_user:xZn2l2M9253KCW5W@ecommerce.cg8brqd.mongodb.net/?appName=Ecommerce
-    database: userdb
+  config:
+    import: optional:configserver:http://localhost:8888
+#  mongodb:
+#    uri: mongodb+srv://rohitmadgundi_db_user:xZn2l2M9253KCW5W@ecommerce.cg8brqd.mongodb.net/?appName=Ecommerce
+#    database: userdb
 server:
   port: 8081

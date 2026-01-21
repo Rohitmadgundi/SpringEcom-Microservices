@@ -1,17 +1,19 @@
 spring:
   application:
     name: order-service
-  datasource:
-    url: jdbc:postgresql://ep-aged-forest-ah14iyzm-pooler.c-3.us-east-1.aws.neon.tech/orderdb?sslmode=require&channel_binding=require
-    username: neondb_owner
-    password: npg_6XNAU7efLhEl
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    properties:
-      hibernate:
-        format_sql: true
+  config:
+    import: configserver:http://localhost:8888
+#  datasource:
+#    url: jdbc:postgresql://ep-aged-forest-ah14iyzm-pooler.c-3.us-east-1.aws.neon.tech/orderdb?sslmode=require&channel_binding=require
+#    username: neondb_owner
+#    password: npg_6XNAU7efLhEl
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#    properties:
+#      hibernate:
+#        format_sql: true
 server:
   port: 8083

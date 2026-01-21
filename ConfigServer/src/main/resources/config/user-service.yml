@@ -1,0 +1,9 @@
+#spring.application.name=User
+spring:
+  mongodb:
+    uri: ${DB_URI}
+    database: ${DATABASE_NAME}
+management:
+  health:
+    mongodb:
+      enabled: false
