@@ -3,7 +3,16 @@ spring:
   mongodb:
     uri: ${DB_URI}
     database: ${DATABASE_NAME}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 management:
   health:
     mongodb:
       enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"

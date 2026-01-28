@@ -3,19 +3,25 @@ spring:
     name: ConfigServer
   profiles:
     active: native
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     config:
       server:
         native:
-          search-locations: classpath:/config
+          search-locations: file:///D:\rohit\SpringEcom-Microservices\ConfigServer\src\main\resources\config
 server:
   port: 8888
+
 
 management:
   endpoints:
     web:
       exposure:
-        include: refresh
+        include: "*"
 #  cloud:
 #    config:
 #      server:

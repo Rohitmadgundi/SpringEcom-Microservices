@@ -3,11 +3,23 @@ spring:
     url: ${DB_URL}
     username: ${DB_USER}
     password: ${DB_PASS}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+app:
+  message: "Hello product-service 124!"
 # server:
 #   port: 8082
 #ep-aged-forest-ah14iyzm-pooler.c-3.us-east-1.aws.neon.tech/productdb?sslmode=require&channel_binding=require
