@@ -20,6 +20,14 @@ management:
         include: "*"
 app:
   message: "Hello product-service 124!"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+
 # server:
 #   port: 8082
 #ep-aged-forest-ah14iyzm-pooler.c-3.us-east-1.aws.neon.tech/productdb?sslmode=require&channel_binding=require
