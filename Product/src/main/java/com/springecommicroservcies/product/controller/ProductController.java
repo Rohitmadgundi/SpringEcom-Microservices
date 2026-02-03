@@ -49,4 +49,12 @@ public class ProductController {
     public ResponseEntity<List<ProductResponse>> search(@RequestParam String keyword){
         return ResponseEntity.ok(productService.searchProduct(keyword));
     }
+
+    @GetMapping("{id}")
+    public ResponseEntity<ProductResponse> getProductById(
+                                            @PathVariable String id){
+        return productService.getProductById(id)
+                .map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
 }

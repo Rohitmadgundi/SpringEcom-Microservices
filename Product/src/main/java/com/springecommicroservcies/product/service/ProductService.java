@@ -6,6 +6,7 @@ import com.springecommicroservcies.product.dto.ProductResponse;
 import com.springecommicroservcies.product.model.Product;
 import com.springecommicroservcies.product.repository.ProductRepository;
 import lombok.Data;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -76,5 +77,11 @@ public class ProductService {
                 .stream()
                 .map(this::mapToProductResponse)
                 .toList();
+    }
+
+
+    public Optional<ProductResponse> getProductById(String id) {
+        return productRepository.findByIdAndActiveTrue(Long.valueOf(id))
+                .map(this::mapToProductResponse);
     }
 }

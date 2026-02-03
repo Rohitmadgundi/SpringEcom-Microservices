@@ -1,7 +1,11 @@
 package com.springecommicroservcies.order.service;
 
 
+import com.springecommicroservcies.order.clients.ProductServiceClient;
+import com.springecommicroservcies.order.clients.UserServiceClient;
 import com.springecommicroservcies.order.dto.CartItemRequest;
+import com.springecommicroservcies.order.dto.ProductResponse;
+import com.springecommicroservcies.order.dto.UserResponse;
 import com.springecommicroservcies.order.model.CartItem;
 import com.springecommicroservcies.order.repository.CartItemRepository;
 import jakarta.transaction.Transactional;
@@ -18,13 +22,15 @@ import java.util.Optional;
 public class CartService {
 
     private final CartItemRepository cartItemRepository;
+    private final ProductServiceClient productServiceClient;
+    private final UserServiceClient userServiceClient;
 
     public boolean addToCart(String userId, CartItemRequest request) {
         // Look for product
-//        Optional<Product> productOpt = productRepository.findById(request.getProductId());
-//        if (productOpt.isEmpty())
-//            return false;
-//
+        ProductResponse productResponse = productServiceClient.getProductDetails(request.getProductId());
+        if (productResponse == null || productResponse.getStockQuantity() < request.getQuantity())
+            return false;
+
 //        Product product = productOpt.get();
 //        if (product.getStockQuantity() < request.getQuantity())
 //            return false;
@@ -34,6 +40,10 @@ public class CartService {
 //            return false;
 //
 //        User user = userOpt.get();
+
+        UserResponse userResponse = userServiceClient.getUserDetails(userId);
+        if (userResponse == null)
+            return false;
 
         CartItem existingCartItem = cartItemRepository.findByUserIdAndProductId(userId, request.getProductId());
         if (existingCartItem != null) {
