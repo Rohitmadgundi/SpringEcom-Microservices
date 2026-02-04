@@ -4,6 +4,7 @@ import com.springecommicroservcies.user.dto.UserRequest;
 import com.springecommicroservcies.user.dto.UserResponse;
 import com.springecommicroservcies.user.service.UserService;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/user")
 @Data
+@Slf4j
 public class UserController {
 
     private final UserService userService;
@@ -41,6 +43,7 @@ public class UserController {
 
     @GetMapping("{id}")
     public ResponseEntity<UserResponse> getUser(@PathVariable String id){
+        log.info("user req : {}" , id);
         return userService.getUser(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(()-> ResponseEntity.notFound().build());
