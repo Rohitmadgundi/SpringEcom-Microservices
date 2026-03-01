@@ -17,4 +17,7 @@ spring:
 #        format_sql: true
 server:
   port: 8083
-
+management:
+  endpoint:
+    shutdown:
+      access: unrestricted

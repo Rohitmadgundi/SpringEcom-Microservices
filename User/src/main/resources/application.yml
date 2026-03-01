@@ -10,3 +10,7 @@ spring:
 server:
   port: 8081
 
+management:
+  endpoint:
+    shutdown:
+      access: unrestricted
